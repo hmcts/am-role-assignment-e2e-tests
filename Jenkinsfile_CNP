@@ -65,7 +65,6 @@ env.MICROSERVICE_NAME = "am_org_role_mapping_service"
 env.DEFINITION_STORE_HOST = "http://ccd-definition-store-api-pr-575.service.core-compute-preview.internal"
 env.CRD_URL = "http://rd-caseworker-ref-api-aat.service.core-compute-aat.internal"
 env.USER_PROFILE_URL= "https://rd-user-profile-api-pr-575.service.core-compute-preview.internal"
-// Vars for Kubernetes PACT
 env.AMQP_TOPIC_NAME= "rd-caseworker-topic-sandbox/subscriptions/BeftaFunctionalTest"
 
 withPipeline(type, product, component) {
@@ -94,7 +93,7 @@ withPipeline(type, product, component) {
   disableLegacyDeployment()
 
   // Sync environment specific branches with master branch
-  syncBranchesWithMaster(branchesToSync)
+  //syncBranchesWithMaster(branchesToSync)
 
   after('functionalTest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/cucumber/**/*'
@@ -111,8 +110,4 @@ withPipeline(type, product, component) {
   after('smoketest:aat') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/site/serenity/**'
   }
-
-  enablePactAs([
-    AppPipelineDsl.PactRoles.CONSUMER
-  ])
 }
