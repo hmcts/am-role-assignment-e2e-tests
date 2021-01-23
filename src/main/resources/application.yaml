@@ -1,0 +1,57 @@
+server:
+  port: ${PORT:5010}
+
+management:
+  health:
+    defaults:
+      enabled: true
+  endpoint:
+    health:
+      enabled: true
+      cache:
+        time-to-live: 5s
+      show-details: "always"
+  security:
+    enabled: false
+  endpoints:
+    health:
+      sensitive: false
+    web:
+      base-path: /
+      exposure:
+        include: 'health'
+
+spring:
+  application:
+    name: AM Role Assignment E2E Tests
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    default-property-inclusion: NON_NULL
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+
+testS2S:
+  api:
+    url: "/testS2SAuthorization"
+integrationTest:
+  api:
+    url: "/"
+
+OrgRoleMappingUrl: ${ORM_URL:http://localhost:4098}
+roleAssignmentAppUrl: ${ROLE_ASSIGNMENT_APP_URL:http://localhost:4096}
+
+amqp:
+  host: ${AMQP_HOST:test}
+  sharedAccessKeyName: ${AMQP_SHARED_ACCESS_KEY_NAME:test}
+  sharedAccessKeyValue: ${AMQP_SHARED_ACCESS_KEY_VALUE:test}
+  topic: ${AMQP_TOPIC_NAME:aat}
+  # DO NOT SET THIS 'true' IN PRODUCTION!
+  trustAllCerts: ${TRUST_ALL_CERTS:true}
+
+
+send-letter:
+  url: ${SEND_LETTER_SERVICE_BASEURL:http://localhost:4021}
+  enabled: ${SEND_LETTER_SERVICE_ENABLED:true}
+  maxRetryAttempts: ${MAX_RETRY_ATTEMPTS:3}
