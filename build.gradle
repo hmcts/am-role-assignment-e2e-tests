@@ -15,14 +15,12 @@ plugins {
     id 'jacoco'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'org.springframework.boot' version '2.3.4.RELEASE'
-    id 'info.solidsoft.pitest' version '1.5.0'
     id 'com.github.ben-manes.versions' version '0.28.0'
     id 'org.sonarqube' version '2.8'
     id 'au.com.dius.pact' version '4.1.7'
     id 'com.github.spacialcircumstances.gradle-cucumber-reporting' version '0.1.22'
 }
 
-apply plugin: "info.solidsoft.pitest"
 apply plugin: 'java'
 apply plugin: 'net.serenity-bdd.aggregator'
 apply plugin: 'project-report'
@@ -33,13 +31,10 @@ apply plugin: 'io.spring.dependency-management'
 def versions = [
         junit          : '5.5.0',
         lombok         : '1.18.6',
-        gradlePitest   : '1.3.0',
-        pitest         : '1.4.2',
         reformLogging  : '5.1.1',
         reformS2sClient: '3.1.1',
         serenity       : '2.1.0',
-        sonarPitest    : '0.5',
-        springBoot     : '2.3.2.RELEASE',
+        springBoot     : '2.3.4.RELEASE',
         springHystrix  : '2.1.1.RELEASE',
         swagger2Version: '3.0.0-SNAPSHOT',
         pact_version   : '4.1.7',
@@ -221,110 +216,22 @@ repositories {
 
 dependencies {
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
     }
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
 
     }
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
     }
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
     }
     compile(group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: '0.1.0') {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
     }
 
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
     compile group: 'org.json', name: 'json', version: '20200518'
 
-    implementation('com.squareup.okhttp3:okhttp:4.8.1') {
-        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
-        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-common'
-    }
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: '1.3.72'
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.3.72'
-
-    // drools engine dependency
-    compile(group: 'org.drools', name: 'drools-core', version: versions.drools) {
-        exclude group: 'org.jsoup', module: 'jsoup'
-    }
-    compile(group: 'org.drools', name: 'drools-compiler', version: versions.drools) {
-        exclude group: 'org.jsoup', module: 'jsoup'
-    }
-    compile(group: 'org.drools', name: 'drools-decisiontables', version: versions.drools) {
-        exclude group: 'org.jsoup', module: 'jsoup'
-    }
-    compile(group: 'org.kie', name: 'kie-ci', version: versions.drools) {
-        exclude group: 'org.jsoup', module: 'jsoup'
-        exclude group: 'org.apache.ant', module: 'ant'
-        exclude group: 'org.apache.ant', module: 'ant-launcher'
-    }
-
-    //Added for Spring Security Implementation
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
-    }
 
     //Added for S2S and User Authentication
     compile group: 'uk.gov.hmcts.reform', name: 'service-auth-provider-client', version: versions.reformS2sClient
@@ -356,7 +263,6 @@ dependencies {
     compile group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '1.2.2'
     compile group: 'org.springframework', name: 'spring-tx', version: '5.2.9.RELEASE'
 
-    compile(group: 'org.springframework', name: 'spring-jms', version: '5.2.9.RELEASE')
     compile(group: 'org.springframework', name: 'spring-beans', version: '5.2.9.RELEASE')
     compile(group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE')
     compile(group: 'org.springframework', name: 'spring-core', version: '5.2.9.RELEASE')
@@ -364,15 +270,11 @@ dependencies {
     compile(group: 'org.springframework', name: 'spring-tx', version: '5.2.9.RELEASE')
     compile(group: 'org.springframework', name: 'spring-aspects', version: '5.2.9.RELEASE')
     compile group: 'org.springframework.retry', name: 'spring-retry', version: '1.3.0'
-    compile group: 'org.amqphub.spring', name: 'amqp-10-jms-spring-boot-starter', version: '2.3.5'
 
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation "org.springframework.security:spring-security-web"
     implementation "org.springframework.security:spring-security-config"
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
-    implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '8.19'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-    implementation 'uk.gov.hmcts.reform:idam-client:v1.5.4'
 
     testCompile('com.opentable.components:otj-pg-embedded:0.13.3')
     testCompile('com.github.tomakehurst:wiremock-jre8:2.25.1')
@@ -380,15 +282,10 @@ dependencies {
 
     testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
 
-    pitest 'org.pitest:pitest-junit5-plugin:0.12'
-
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions.junit
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: versions.junit
 
-    testCompile group: 'org.pitest', name: 'pitest', version: versions.pitest
-    testCompile 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.7'
-    testCompile 'org.codehaus.sonar-plugins:sonar-pitest-plugin:0.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 

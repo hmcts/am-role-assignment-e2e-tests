@@ -34,8 +34,8 @@ public class SmokeTest {
                 .given()
                 .relaxedHTTPSValidation()
                 .header(CONTENT_TYPE, APPLICATION_JSON_VALUE)
-                .get("/")
+                .get("/health")
                 .andReturn();
-        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertEquals(200, response.statusCode());
     }
 }
