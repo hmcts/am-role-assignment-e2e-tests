@@ -39,7 +39,7 @@ def versions = [
         feign_jackson  : '9.7.0'
 ]
 
-mainClassName = 'uk.gov.hmcts.reform.orgrolemapping.OrgRoleMappingApplication'
+mainClassName = 'uk.gov.hmcts.reform.orgrolemapping.AmRoleAssignmentEndToEnd'
 def jarName = 'am-role-assignment-e2e-tests.jar'
 
 pmd {
@@ -195,39 +195,13 @@ repositories {
 
 dependencies {
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
     }
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot) {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
-        exclude group: "org.springframework", module: "spring-aop"
-        exclude group: "org.springframework", module: "spring-beans"
-        exclude group: "org.springframework", module: "spring-context"
-        exclude group: "org.springframework", module: "spring-core"
-        exclude group: "org.springframework", module: "spring-jdbc"
-        exclude group: "org.springframework", module: "spring-test"
-        exclude group: "org.springframework", module: "spring-tx"
-        exclude group: "org.springframework", module: "spring-web"
-        exclude group: "org.springframework", module: "spring-webmvc"
 
     }
 
     compile(group: 'uk.gov.hmcts.reform', name: 'properties-volume-spring-boot-starter', version: '0.1.0') {
-        exclude group: 'org.hibernate', module: 'hibernate-core'
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-websocket"
-        exclude group: "org.apache.tomcat.embed", module: "tomcat-embed-core"
+
     }
 
     compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
@@ -286,16 +260,11 @@ dependencies {
     implementation "org.springframework.security:spring-security-web"
     implementation "org.springframework.security:spring-security-config"
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
-    implementation group: 'com.nimbusds', name: 'nimbus-jose-jwt', version: '8.19'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-    implementation 'uk.gov.hmcts.reform:idam-client:v1.5.4'
 
-    testCompile('com.opentable.components:otj-pg-embedded:0.13.3')
     testCompile('com.github.tomakehurst:wiremock-jre8:2.25.1')
     testCompile('org.springframework.cloud:spring-cloud-contract-wiremock:2.2.4.RELEASE')
 
     testCompile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: versions.junit
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: versions.junit
@@ -308,7 +277,7 @@ dependencies {
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
         exclude group: 'junit', module: 'junit'
     }
-    testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '5.11.0-RDM-9238.2'
+    testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '6.5.2'
     //compile fileTree(dir: 'lib', include: 'befta-fw-5.11.0.jar')
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.2.5.RELEASE'
 

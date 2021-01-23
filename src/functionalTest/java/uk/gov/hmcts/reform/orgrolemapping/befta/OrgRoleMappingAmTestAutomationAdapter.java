@@ -15,10 +15,10 @@ public class OrgRoleMappingAmTestAutomationAdapter extends DefaultTestAutomation
 
     public static final String EMAIL_TEMPLATE = "ORM-func-test-user-%s@justice.gov.uk";
 
-    @Override
+    /*@Override
     public void doLoadTestData() {
 
-    }
+    }*/
 
     @Override
     public Object calculateCustomValue(BackEndFunctionalTestScenarioContext scenarioContext, Object key) {
