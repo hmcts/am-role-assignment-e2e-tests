@@ -77,28 +77,28 @@ configurations {
 }
 
 sourceSets {
-    integrationTest {
-        java {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
-            srcDir file('src/integrationTest/java')
-        }
-        resources.srcDir file('src/integrationTest/resources')
-    }
     functionalTest {
         java {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
+            compileClasspath += main.output
+            runtimeClasspath += main.output
             srcDir file('src/functionalTest/java')
         }
         resources.srcDir file('src/functionalTest/resources')
     }
 
+    integrationTest {
+        java {
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+            srcDir file('src/integrationTest/java')
+        }
+        resources.srcDir file('src/integrationTest/resources')
+    }
 
     smokeTest {
         java {
-            compileClasspath += main.output + test.output
-            runtimeClasspath += main.output + test.output
+            compileClasspath += main.output
+            runtimeClasspath += main.output
             srcDir file('src/smokeTest/java')
         }
         resources.srcDir file('src/smokeTest/resources')
@@ -133,10 +133,12 @@ test {
     failFast = true
 }
 
-task integration(type: Test, description: 'Runs the integration tests.', group: 'Verification') {
+task integration(type: Test) {
+    description = "Runs integration tests"
+    group = "Verification"
     testClassesDirs = sourceSets.integrationTest.output.classesDirs
     classpath = sourceSets.integrationTest.runtimeClasspath
-    finalizedBy aggregate
+    failFast = true
 }
 
 task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
@@ -170,6 +172,7 @@ jacocoTestReport {
 }
 
 project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
+project.tasks['sonarqube'].group = "Verification"
 
 jacoco {
     toolVersion = "0.8.5"
