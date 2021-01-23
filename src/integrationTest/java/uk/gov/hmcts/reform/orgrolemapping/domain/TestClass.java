@@ -7,6 +7,8 @@ public class TestClass {
 
     @Test
     public void dummyTest() {
-        Assert.assertEquals(1, 1);
+        String s1 = "myString";
+        String s2 = "myString";
+        Assert.assertEquals(s1, s2);
     }
 }

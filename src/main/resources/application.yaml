@@ -31,14 +31,6 @@ spring:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
 
-
-testS2S:
-  api:
-    url: "/testS2SAuthorization"
-integrationTest:
-  api:
-    url: "/"
-
 OrgRoleMappingUrl: ${ORM_URL:http://localhost:4098}
 roleAssignmentAppUrl: ${ROLE_ASSIGNMENT_APP_URL:http://localhost:4096}
 

@@ -1,6 +1,6 @@
 java:
   image: 'hmctspublic.azurecr.io/am/role-assignment-e2e-tests:latest'
-  ingressHost: am-org-role-mapping-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+  ingressHost: am-role-assignment-e2e-tests-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
   applicationPort: 5010
   aadIdentityName: am
   keyVaults:

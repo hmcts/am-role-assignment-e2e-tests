@@ -27,7 +27,6 @@ public class SmokeTest {
 
     @Test
     public void test_should_prove_app_is_running_and_healthy() {
-
         RestAssured.baseURI = targetInstance;
         RestAssured.useRelaxedHTTPSValidation();
 
