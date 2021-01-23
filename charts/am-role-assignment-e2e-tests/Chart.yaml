@@ -6,3 +6,8 @@ home: https://github.com/hmcts/am-role-assignment-e2e-tests
 version: 0.0.1
 maintainers:
   - name: Access Management Team
+
+dependencies:
+  - name: java
+    version: 3.4.4
+    repository: '@hmctspublic'

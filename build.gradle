@@ -161,8 +161,8 @@ jacoco {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "am-org-role-mapping-service"
-        property "sonar.projectKey", "am-org-role-mapping-service"
+        property "sonar.projectName", "am-role-assignment-e2e-tests"
+        property "sonar.projectKey", "am-role-assignment-e2e-tests"
         property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml"
         property "sonar.pitest.mode", "reuseReport"
         property "sonar.pitest.reportsDirectory", "build/reports/pitest"
