@@ -69,12 +69,22 @@ jacocoTestCoverageVerification {
 }
 
 configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
     functionalTestCompile.extendsFrom testCompile
     functionalTestRuntime.extendsFrom testRuntime
     cucumberRuntime.extendsFrom(functionalRuntime)
 }
 
 sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integrationTest/java')
+        }
+        resources.srcDir file('src/integrationTest/resources')
+    }
     functionalTest {
         java {
             compileClasspath += main.output + test.output
@@ -107,8 +117,26 @@ tasks.withType(Test) {
     }
 }
 
+
+idea {
+    module {
+        testSourceDirs += project.sourceSets.integrationTest.java.srcDirs
+        testSourceDirs += project.sourceSets.integrationTest.resources.srcDirs
+        testSourceDirs += project.sourceSets.functionalTest.java.srcDirs
+        testSourceDirs += project.sourceSets.functionalTest.resources.srcDirs
+        testSourceDirs += project.sourceSets.smokeTest.java.srcDirs
+        testSourceDirs += project.sourceSets.smokeTest.resources.srcDirs
+    }
+}
+
 test {
     failFast = true
+}
+
+task integration(type: Test, description: 'Runs the integration tests.', group: 'Verification') {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    finalizedBy aggregate
 }
 
 task functional(type: Test, description: 'Runs the functional tests.', group: 'Verification') {
@@ -141,7 +169,7 @@ jacocoTestReport {
     }
 }
 
-project.tasks['sonarqube'].dependsOn jacocoTestReport
+project.tasks['sonarqube'].dependsOn test, integration, jacocoTestReport
 
 jacoco {
     toolVersion = "0.8.5"
@@ -301,6 +329,9 @@ dependencies {
     testCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
     testCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
 
+    integrationTestCompileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    integrationTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+
     smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
     smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
     smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
@@ -314,6 +345,8 @@ dependencies {
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
+    integrationTestCompile sourceSets.main.runtimeClasspath
+    integrationTestCompile sourceSets.test.runtimeClasspath
     smokeTestCompile sourceSets.main.runtimeClasspath
     smokeTestCompile sourceSets.test.runtimeClasspath
     smokeTestCompileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
