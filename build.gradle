@@ -209,6 +209,9 @@ dependencies {
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot) {
     }
 
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '9.0.40'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.40'
+
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
         }
     testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '5.11.0-RDM-9238.2'
