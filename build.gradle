@@ -208,7 +208,9 @@ repositories {
 dependencies {
     compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: versions.springBoot) {
     }
+    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: versions.springBoot) {
 
+    }
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-websocket', version: '9.0.40'
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.40'
 
