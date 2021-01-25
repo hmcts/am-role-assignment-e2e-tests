@@ -90,14 +90,14 @@ sourceSets {
 //        resources.srcDir file('src/integrationTest/resources')
 //    }
 
-//    smokeTest {
-//        java {
-//            compileClasspath += main.output + test.output
-//            runtimeClasspath += main.output + test.output
-//            srcDir file('src/smokeTest/java')
-//        }
-//        resources.srcDir file('src/smokeTest/resources')
-//    }
+    smokeTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/smokeTest/java')
+        }
+        resources.srcDir file('src/smokeTest/resources')
+    }
 }
 
 tasks.withType(JavaCompile) {
@@ -126,11 +126,11 @@ task functional(type: Test, description: 'Runs the functional tests.', group: 'V
 //}
 //check.dependsOn integration
 
-//task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {
-//    testClassesDirs = sourceSets.smokeTest.output.classesDirs
-//    classpath = sourceSets.smokeTest.runtimeClasspath
-//    finalizedBy aggregate
-//}
+task smoke(type: Test, description: 'Runs the smoke tests.', group: 'Verification') {
+    testClassesDirs = sourceSets.smokeTest.output.classesDirs
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    finalizedBy aggregate
+}
 
 jacocoTestReport {
     executionData(test)
@@ -215,19 +215,19 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.40'
 
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
-        }
+    }
     testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '5.11.0-RDM-9238.2'
 
     testCompile(group: 'io.cucumber', name: 'cucumber-java', version: versions.cucumber) {
     }
     testCompile group: 'io.cucumber', name: 'cucumber-junit', version: versions.cucumber
 
-//    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
-//    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
-//    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
-//    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
-//    smokeTestCompile group: 'io.rest-assured', name: 'rest-assured', version: versions.rest_assured
-//    smokeTestCompile group: 'commons-io', name: 'commons-io', version: '2.8.0'
+    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
+    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
+    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
+    smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
+    smokeTestCompile group: 'io.rest-assured', name: 'rest-assured', version: versions.rest_assured
+    smokeTestCompile group: 'commons-io', name: 'commons-io', version: '2.8.0'
     // AM-467-Serenity report for Integration test
 //    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
 //    integrationTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
@@ -241,8 +241,8 @@ dependencies {
     functionalTestCompile sourceSets.main.runtimeClasspath
     functionalTestCompile sourceSets.test.runtimeClasspath
 
-//    smokeTestCompile sourceSets.main.runtimeClasspath
-//    smokeTestCompile sourceSets.test.runtimeClasspath
+    smokeTestCompile sourceSets.main.runtimeClasspath
+    smokeTestCompile sourceSets.test.runtimeClasspath
 //    smokeTestCompileOnly group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 //    smokeTestAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: versions.lombok
 
