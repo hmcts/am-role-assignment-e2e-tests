@@ -1,7 +1,7 @@
 {
   "_guid_": "S-001_DeleteDataForRoleAssignments",
   "productName": "Role Assignment Service",
-  "operationName": "Delete Role Assignments by Process",
+  "operationName": "Delete Role Assignments by Id",
   "method": "DELETE",
   "uri": "{{ROLE_ASSIGNMENT_URL}}/am/role-assignments?process={process}&reference={reference}",
   "specs": [
@@ -21,9 +21,9 @@
     },
     "pathVariables": {
       "process": "staff-organisational-role-mapping",
-      "reference":"${[scenarioContext][parentContext][childContexts][S-003_FetchCaseworkerProfileFromUP][testData][actualResponse][body][userIdentifier]}"
+      "reference":"${[scenarioContext][parentContext][childContexts][S-001_CreateCaseworkerProfileInCRD][testData][actualResponse][body][case_worker_ids][0]}"
     }
-   },
+  },
 
   "expectedResponse": {
     "headers": {

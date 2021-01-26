@@ -2,8 +2,8 @@
   "_guid_": "WaitForRASProcessing",
   "productName": "Organisation Role Mapping",
   "operationName": "To provide adequate time for RAS to create records",
-  "method": "POST",
-  "uri": "/sleep",
+  "method": "GET",
+  "uri": "/welcome",
   "specs": [
     "to provide adequate time for RAS to create records"
   ],
@@ -30,7 +30,7 @@
       "Content-Type": "application/json"
     },
     "body": {
-      "__plainTextValue__": "Sleep time for Functional tests is over"
+      "__plainTextValue__": "Welcome to Organisation Role Mapping Service"
     }
   }
 }
