@@ -3,7 +3,7 @@
   "productName": "Caseworker Reference Data",
   "operationName": "Create Caseworker Profile in CRD",
   "method": "POST",
-  "uri": "{{CRD_URL}}/refdata/case-worker/users/",
+  "uri": "{{CRD_URL}}/refdata/case-worker/upload-file",
   "specs": [
     "to create the caseworker profile"
   ],
