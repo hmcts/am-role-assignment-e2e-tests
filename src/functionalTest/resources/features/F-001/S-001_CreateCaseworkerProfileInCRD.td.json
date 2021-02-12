@@ -15,24 +15,25 @@
   },
   "request": {
     "headers": {
-      "Authorization": "[[DEFAULT_AUTO_VALUE]]",
-      "ServiceAuthorization": "[[DEFAULT_AUTO_VALUE]]",
-      "Content-Type": "application/json"
+      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJ6aXAiOiJOT05FIiwia2lkIjoiYi9PNk92VnYxK3krV2dySDVVaTlXVGlvTHQwPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJURVNUX0FNX09STV9CRUZUQUB0ZXN0LmxvY2FsIiwiYXV0aF9sZXZlbCI6MCwiYXVkaXRUcmFja2luZ0lkIjoiMGFhOTQ5YTYtNWFlNC00ZGFiLTk2MDQtMGRjOGNlNzhiMGEwIiwiaXNzIjoiaHR0cDovL2ZyLWFtOjgwODAvb3BlbmFtL29hdXRoMi9obWN0cyIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6ImM1NDAzNTMxLWQwY2MtNDEyNy1iNzA0LTNkYThiZGJlMzA3YSIsImF1ZCI6ImFtX2RvY2tlciIsIm5iZiI6MTYxMzA2MDczMywiZ3JhbnRfdHlwZSI6InBhc3N3b3JkIiwic2NvcGUiOlsib3BlbmlkIiwicHJvZmlsZSIsInJvbGVzIiwiY3JlYXRlLXVzZXIiLCJtYW5hZ2UtdXNlciIsInNlYXJjaC11c2VyIiwiYXV0aG9yaXRpZXMiXSwiYXV0aF90aW1lIjoxNjEzMDYwNzMzLCJyZWFsbSI6Ii9obWN0cyIsImV4cCI6MTYxMzA4OTUzMywiaWF0IjoxNjEzMDYwNzMzLCJleHBpcmVzX2luIjoyODgwMCwianRpIjoiYWE1OGFiMzItZmY2MS00NTcwLWE2Y2EtNGE2NGM5NjJmYzRkIn0.eVG4lb4kpvtgn41wUL-9Zh6xNmUdWuuiZ9mqkt2z5d8u2mMx89BrNuu5xvyTRD2mATdRw8GG43_mlviP4D9MlUi5WeZEJDXC1vCYzPv9F7utmldumB-Poe4cRRmMrbMKoC4AGHNtDm__HT9uq-Nz6d-qqPkFD_etFgmz0P_qLRW55jdHzOjq4JMTnmR7miWFDeU-puowLqHuOwALBBp22ruylBx37G_X4hLCTNcVuaQS4K_pfXPYRC-PQfHiFWKHOQ-DdWliVpzJpo8mf3kBXSbjxI-i8ZMuZ7v4DlKwB7ajDDPbbBYsJHGU44Y6kwZYFk6gDNm9S1a6NbBJa8ZydA",
+      "ServiceAuthorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbV9vcmdfcm9sZV9tYXBwaW5nX3NlcnZpY2UiLCJleHAiOjE2MTMwNzUxMDd9.j0mouaIV4mVSA9zGgZ9tkpM_6QRfLn0Tehd85NwBfDC8l7WZ7TQHFkEZg5AMgWSXrtgx7Mv5MtnA2T21KLrZsQ",
+      "Content-Type": "multipart/form-data"
     },
     "body": {
-      "_extends_" : "CreateSingleUserProfileCrd"
+      "key": "file",
+      "filePath": "Staff Data Upload_S-001.xlsx"
     }
   },
   "expectedResponse": {
-    "_extends_": "Common_201_Response",
+    "_extends_": "Common_200_Response",
     "headers": {
       "Content-Length": "[[ANYTHING_PRESENT]]",
-      "Content-Type": "application/json"
+      "Content-Type": "[[ANYTHING_PRESENT]]"
     },
     "body": {
       "message" : "Request Completed Successfully",
       "message_details" : "1 record(s) uploaded",
-      "case_worker_ids" : "[[ANYTHING_PRESENT]]"
+      "error_details": "[[ANYTHING_PRESENT]]"
     }
   }
 }
