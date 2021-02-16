@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.orgrolemapping.befta;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.gov.hmcts.befta.DefaultTestAutomationAdapter;
+import uk.gov.hmcts.befta.data.RequestData;
 import uk.gov.hmcts.befta.player.BackEndFunctionalTestScenarioContext;
 
 import java.util.UUID;
@@ -36,6 +37,19 @@ public class OrgRoleMappingAmTestAutomationAdapter extends DefaultTestAutomation
                     logger.info(exception.getMessage());
                 }
                 logger.info("The nap is complete.");
+                return null;
+            case ("customFileUpload"):
+
+                RequestData request = scenarioContext.getTestData().getRequest();
+                CustomFileUpload.uploadFile(scenarioContext.getTestData().getUri(),
+                        request.getHeaders().get(CustomFileUpload.SERVICE_AUTHORIZATION).toString(),
+                        request.getHeaders().get(CustomFileUpload.AUTHORIZATION).toString(),
+                        request.getBody().get("fileName").toString(),
+                        request.getBody().get("mimeType").toString());
+                scenarioContext.getTestData().setUri("http://localhost:8095");
+                scenarioContext.getTestData().setMethod("GET");
+                request.setBody(null);
+
                 return null;
             default:
                 return super.calculateCustomValue(scenarioContext, key);
