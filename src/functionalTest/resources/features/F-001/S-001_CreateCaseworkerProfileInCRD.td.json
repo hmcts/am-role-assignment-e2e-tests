@@ -21,8 +21,9 @@
 
     "body": {
       "fileName": "Staff Data Upload_S-001.xlsx",
-      "email_id": "${}${[scenarioContext][customValues][customFileUpload]}",
-      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "customFileUpload": "${}${[scenarioContext][customValues][customFileUpload]}",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "postFileUploadPath": "CRD_URL"
     }
   },
   "expectedResponse": {
