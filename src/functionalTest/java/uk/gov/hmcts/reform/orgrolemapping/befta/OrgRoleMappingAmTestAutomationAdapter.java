@@ -47,7 +47,8 @@ public class OrgRoleMappingAmTestAutomationAdapter extends DefaultTestAutomation
                         request.getBody().get("fileName").toString(),
                         request.getBody().get("mimeType").toString());
 
-                scenarioContext.getTestData().setUri(System.getenv().get(request.getBody().get("postFileUploadPath").toString()));
+                scenarioContext.getTestData().setUri(System.getenv().get(
+                        request.getBody().get("postFileUploadPath").toString()));
                 scenarioContext.getTestData().setMethod("GET");
                 request.setBody(null);
 

@@ -6,6 +6,7 @@ import net.serenitybdd.rest.SerenityRest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import uk.gov.hmcts.befta.exception.FunctionalTestException;
 
 import java.io.File;
 import java.net.URL;
@@ -26,7 +27,9 @@ public class CustomFileUpload {
         File file = null;
         try {
             URL url = CustomFileUpload.class.getClassLoader().getResource(/*"../resources/" +*/ fileName);
-            assert url != null;
+            if (url == null) {
+                throw new FunctionalTestException("Failed to load from filePath: " + url);
+            }
             file = Paths.get(url.toURI()).toFile();
         } catch (Exception e) {
             logger.error("Exception while reading the file: {}", e.getMessage());
