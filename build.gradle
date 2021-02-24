@@ -217,7 +217,7 @@ dependencies {
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: versions.springBoot) {
     }
 
-    implementation 'uk.gov.hmcts:befta-fw:RDM'
+    testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '5.19.0-RDM-9893-3'
 
     testCompile(group: 'io.cucumber', name: 'cucumber-java', version: versions.cucumber) {
     }
