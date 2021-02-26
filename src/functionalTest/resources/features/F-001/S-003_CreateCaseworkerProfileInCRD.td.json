@@ -1,0 +1,39 @@
+{
+  "_guid_": "S-003_CreateCaseworkerProfileInCRD",
+  "productName": "Caseworker Reference Data",
+  "operationName": "Create Caseworker Profile in CRD",
+  "method": "POST",
+  "uri": "{{CRD_URL}}/refdata/case-worker/upload-file",
+  "specs": [
+    "to create the caseworker profile"
+  ],
+  "users": {
+    "invokingUser": {
+      "username": "[[$TEST_AM_CRD_USER1_BEFTA]]",
+      "password": "[[$TEST_AM_CRD_USER1_BEFTA_PASSWORD]]"
+    }
+  },
+  "request": {
+    "headers": {
+      "Authorization": "[[DEFAULT_AUTO_VALUE]]",
+      "ServiceAuthorization": "[[DEFAULT_AUTO_VALUE]]"
+    },
+
+    "body": {
+      "fileName": "Staff Data Upload_S-003_1.xlsx",
+      "customFileUpload": "${}${[scenarioContext][customValues][customFileUpload]}",
+      "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "postFileUploadPath": "CRD_URL"
+    }
+  },
+  "expectedResponse": {
+    "_extends_": "Common_200_Response",
+    "headers": {
+      "Content-Length": "[[ANYTHING_PRESENT]]",
+      "Content-Type": "[[ANYTHING_PRESENT]]"
+    },
+    "body" : {
+      "message" : "Message for the Caseworker Ref Data API"
+    }
+  }
+}
