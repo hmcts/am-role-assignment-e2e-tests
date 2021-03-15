@@ -20,6 +20,7 @@ Feature: Create Role Assignments for Users
     Then a positive response is received,
     And the response has all other details as expected,
     And a successful call [to delete role assignments just created above] as in [S-001_DeleteDataForRoleAssignments].
+    #Deprioritized by CRD team to implement delete API
 #    And a successful call [to delete user profile from CRD] as in [S-001_DeleteDataForRoleAssignments].
 #    And a successful call [to delete user profile from UP] as in [S-001_DeleteDataForRoleAssignments].
 #    And a successful call [to delete user profile from IDAM] as in [S-001_DeleteDataForRoleAssignments].
