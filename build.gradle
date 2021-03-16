@@ -213,6 +213,10 @@ dependencies {
     testCompile group: 'uk.gov.hmcts', name: 'befta-fw', version: '5.19.0-RDM-9893-3'
     testCompile(group: 'io.cucumber', name: 'cucumber-java', version: versions.cucumber)
     testCompile group: 'io.cucumber', name: 'cucumber-junit', version: versions.cucumber
+    testCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
+    testCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
+    testCompile group: 'net.serenity-bdd', name: 'serenity-rest-assured', version: versions.serenity
+    testCompile group: 'net.serenity-bdd', name: 'serenity-spring', version: versions.serenity
 
     smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-core', version: versions.serenity
     smokeTestCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: versions.serenity
