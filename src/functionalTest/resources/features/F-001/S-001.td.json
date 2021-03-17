@@ -1,19 +1,27 @@
 {
   "_guid_": "S-001",
-  "title": "must successfully create org role mapping for multiple users with multiple role assignments",
-  "_extends_": "F-001_Test_Data_Base",
+  "productName": "Role Assignment Service",
+  "operationName": "Fetch Assignment From Role Assignment Service",
+  "method": "GET",
+  "uri": "{{ROLE_ASSIGNMENT_URL}}/am/role-assignments/actors/{actorId}",
   "specs": [
-    "contains the data received from CRD API got transformed",
-    "contains multiple users with multiple role assignments"
+    "an active IDAM profile with full permissions",
+    "contains the actorId of the user just created"
   ],
+  "users": {
+    "invokingUser": {
+      "username": "[[$TEST_AM_CRD_USER1_BEFTA]]",
+      "password": "[[$TEST_AM_CRD_USER1_BEFTA_PASSWORD]]"
+    }
+  },
   "request": {
     "headers": {
+      "Authorization": "[[DEFAULT_AUTO_VALUE]]",
+      "ServiceAuthorization": "[[DEFAULT_AUTO_VALUE]]",
       "Content-Type": "application/json"
     },
-    "body": {
-      "userIds":[
-        "${}${[scenarioContext][customValues][generateUUID]}"
-      ]
+    "pathVariables": {
+      "actorId": "${[scenarioContext][childContexts][S-001_CreateCaseworkerProfileInCRD][testData][actualResponse][body][case_worker_ids][0]}"
     }
   },
   "expectedResponse": {
@@ -23,26 +31,21 @@
       "Content-Type": "application/json"
     },
     "body": {
-      "arrayInMap": [
+      "roleAssignmentResponse": [
         {
-          "roleAssignmentResponse": {
-            "roleRequest": {
-              "_extends_": "ResponseRoleRequest",
-              "reference": "${}${[scenarioContext][testData][request][body][users][0]}"
-            },
-            "requestedRoles": [
-              {
-                "_extends_": "ResponseRequestedRole",
-                "roleName": "senior-tribunal-caseworker",
-                "actorId": "${}${[scenarioContext][testData][request][body][users][0]}",
-                "reference": "${}${[scenarioContext][testData][request][body][users][0]}"
-              },
-              {
-                "_extends_": "ResponseRequestedRole",
-                "actorId": "${}${[scenarioContext][testData][request][body][users][0]}",
-                "reference": "${}${[scenarioContext][testData][request][body][users][0]}"
-              }
-            ]
+          "id": "[[ANYTHING_PRESENT]]",
+          "actorIdType": "IDAM",
+          "actorId": "${[scenarioContext][testData][request][pathVariables][actorId]}",
+          "roleType": "ORGANISATION",
+          "roleName": "senior-tribunal-caseworker",
+          "classification": "PUBLIC",
+          "grantType": "STANDARD",
+          "roleCategory": "STAFF",
+          "readOnly": false,
+          "created": "[[ANYTHING_PRESENT]]",
+          "attributes": {
+            "primaryLocation": "2191654",
+            "jurisdiction": "IA"
           }
         }
       ]
