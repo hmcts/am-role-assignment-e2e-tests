@@ -20,7 +20,7 @@
       "Content-Type": "application/json"
     },
     "pathVariables": {
-      "actorId": "${[scenarioContext][parentContext][childContexts][S-002_RetrieveUserUUID][testData][actualResponse][body][userIdentifier]}"
+      "actorId": "5d46eaf9-1a9c-443f-8e14-64572e355ad0"
     }
   },
   "expectedResponse": {
