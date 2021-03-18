@@ -1,5 +1,5 @@
 {
-  "_guid_": "S-001_CreateCaseworkerProfileInCRD",
+  "_guid_": "S-002_CreateCaseworkerProfileInCRD",
   "productName": "Caseworker Reference Data",
   "operationName": "Create Caseworker Profile in CRD",
   "method": "POST",
@@ -20,7 +20,7 @@
     },
 
     "body": {
-      "fileName": "Staff Data Upload_S-001_1.xlsx",
+      "fileName": "Staff Data Upload_S-002_1.xlsx",
       "customFileUpload": "${}${[scenarioContext][customValues][customFileUpload]}",
       "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "postFileUploadPath": "CRD_URL"

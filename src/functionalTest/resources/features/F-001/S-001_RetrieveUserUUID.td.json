@@ -1,0 +1,44 @@
+{
+  "_guid_": "S-001_RetrieveUserUUID",
+  "productName": "PRD UP Service",
+  "operationName": "Retrieve user uuid",
+  "method": "GET",
+  "uri": "{{UP_URL}}/v1/userprofile",
+  "specs": [
+    "to retrieve the uuid of just uploaded user"
+  ],
+  "users": {
+    "invokingUser": {
+      "username": "[[$TEST_AM_CRD_USER1_BEFTA]]",
+      "password": "[[$TEST_AM_USER2_BEFTA_PWD]]"
+    }
+  },
+  "request": {
+    "headers": {
+      "Authorization": "[[DEFAULT_AUTO_VALUE]]",
+      "ServiceAuthorization": "[[DEFAULT_AUTO_VALUE]]",
+      "Content-Type": "application/json"
+    },
+    "queryParams": {
+      "email": "am_e2e_s01@justice.gov.uk"
+    }
+  },
+  "expectedResponse": {
+    "_extends_": "Common_200_Response",
+    "headers": {
+      "Content-Length": "[[ANYTHING_PRESENT]]",
+      "Content-Type": "[[ANYTHING_PRESENT]]"
+    },
+    "body" : {
+      "email" : "am_e2e_s01@justice.gov.uk",
+      "firstName" : "[[ANYTHING_PRESENT]]",
+      "lastName" : "[[ANYTHING_PRESENT]]",
+      "idamStatus" : "[[ANYTHING_PRESENT]]",
+      "roleAdditionResponse" : null,
+      "roleDeletionResponse" : null,
+      "attributeResponse" : null,
+      "roles" : null,
+      "userIdentifier" : "[[ANYTHING_PRESENT]]"
+    }
+  }
+}
